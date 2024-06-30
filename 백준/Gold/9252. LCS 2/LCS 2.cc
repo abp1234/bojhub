@@ -47,7 +47,7 @@ int main(void) {
 		}
 		else  {
 			if (check[i - 1][j - 1] != check[i][j])
-				result.push_back(lst[i]);
+				result.push_back(arr[j]);
 			i--;
 			j--;
 		}
