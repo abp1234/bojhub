@@ -35,6 +35,9 @@ int fn(int N) {
 }
 
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 	int N;
 	cin >> N;
 	cout << (N != 1 ? fn(N) : 0) << '\n';
