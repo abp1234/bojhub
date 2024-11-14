@@ -5,8 +5,8 @@
 using namespace std;
 
 struct St {
-	int dp;
-	int lmax;
+	long long dp;
+	long long lmax;
 };
 
 int main() {
@@ -18,8 +18,8 @@ int main() {
 	for (int i = 0; i < n; ++i)cin >> arr[i];
 
 	vector<St> dp(n, { 0,0 });
-	int lm = 0, ans = 0;
-	int tmp = 0;
+	long long lm = 0, ans = 0;
+	long long tmp = 0;
 	int l = 0, r = 0;
 
 	while (true) {
