@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+WITH RankedColony AS(
+    SELECT
+        ID,
+        SIZE_OF_COLONY,
+        NTILE(4) OVER (ORDER BY SIZE_OF_COLONY DESC) AS QUARTILE
+    FROM
+        ECOLI_DATA
+)
+SELECT
+    ID,
+    CASE
+        WHEN QUARTILE = 1 THEN 'CRITICAL'
+        WHEN QUARTILE = 2 THEN 'HIGH'
+        WHEN QUARTILE = 3 THEN 'MEDIUM'
+        WHEN QUARTILE = 4 THEN 'LOW'
+    END AS COLONY_NAME
+FROM
+    RankedColony
+ORDER BY
+    ID;
