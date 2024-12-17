@@ -1,0 +1,35 @@
+-- 코드를 작성해주세요
+WITH EMPLOYEE_SCORE AS (
+    SELECT
+        EMP_NO,
+        AVG(SCORE) AS AVG_SCORE
+    FROM HR_GRADE
+    WHERE YEAR = 2022
+    GROUP BY EMP_NO
+),
+EMPLOYEE_GRADE AS (
+    SELECT
+        E.EMP_NO,
+        E.EMP_NAME,
+        CASE
+            WHEN ES.AVG_SCORE >= 96 THEN 'S'
+            WHEN ES.AVG_SCORE >= 90 THEN 'A'
+            WHEN ES.AVG_SCORE >= 80 THEN 'B'
+            ELSE 'C'
+        END AS GRADE,
+        CASE
+            WHEN ES.AVG_SCORE >= 96 THEN FLOOR(E.SAL * 0.2)
+            WHEN ES.AVG_SCORE >= 90 THEN FLOOR(E.SAL * 0.15)
+            WHEN ES.AVG_SCORE >= 80 THEN FLOOR(E.SAL * 0.1)
+            ELSE 0
+        END AS BONUS
+    FROM HR_EMPLOYEES E
+    JOIN EMPLOYEE_SCORE ES ON E.EMP_NO = ES.EMP_NO
+)
+SELECT
+    EMP_NO,
+    EMP_NAME,
+    GRADE,
+    BONUS
+FROM EMPLOYEE_GRADE
+ORDER BY EMP_NO;
