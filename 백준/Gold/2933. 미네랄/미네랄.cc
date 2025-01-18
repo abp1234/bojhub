@@ -98,7 +98,7 @@ void mc(vector<Pt> cl, vector<vector<bool>> v) {
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-
+	cout.tie(0);
 	cin >> r >> c;
 	g.resize(r, vector<char>(c));
 	for (int i = 0; i < r; ++i) {
